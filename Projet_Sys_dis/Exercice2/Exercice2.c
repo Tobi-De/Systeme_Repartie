@@ -43,6 +43,7 @@ int main(int argc, char* argv[]){
         }
 
         if(fils2 == 0){
+            sleep(20);
            for(i = 0; i < 100; i++){
                 *value += 1;
             }
@@ -57,19 +58,17 @@ int main(int argc, char* argv[]){
             }
 
             if(fils3 == 0){
+                sleep(40);
                 for(i = 0; i < 100; i++){
                     *value += 1;
                 }
             }
             else{
                
-                fils3 = wait(&status);
-                printf("\nLa value est: %d", *value);
+                printf("\nLa valeur est: %d", *value);
                 
-                //detach from shared memory
+                //destruction de la memoire partager
                 shmdt(value);
-  
-                //destroy the shared memory
                 shmctl(shmid,IPC_RMID,NULL); 
             }
         }
